@@ -18,3 +18,15 @@ for el in range(0,len(nums)):
     else:
         freq_map[nums[el]]=1
 print(freq_map)
+
+
+# method2:
+# do you know freq_map.get(5,0)?
+# =>it means it find the 5 character data into the dictionary if it exits than it will return the value of 5 else it returns 0
+
+nums=[5,3,8,2,4,6,8,5,5,2,1,0,0,2,6,5,9,7]
+freq_map={}
+
+for el in range(0,len(nums)):
+    freq_map[nums[el]]=freq_map.get(nums[el],0)+1
+print(freq_map)
