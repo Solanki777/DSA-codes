@@ -51,14 +51,14 @@
 # here the thing is same but for Makig empty array first we convert the charcheter into ASCII means ASCII of a is 97 like that than minus 97 it means 0 th index . So this is how we strore the frequency of a.
 
 m="asdfasdfdghfjfghdasdh"
-n=["a","s","d","f","g","h","j"]
+
 d=dict()
 
 for el in m:
     asci=ord(el)
     index=asci-97
     d[index]=d.get(index,0)+1
-for el in n:
+
 
 print(d)
 
