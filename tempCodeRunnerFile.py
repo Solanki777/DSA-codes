@@ -1,5 +1,14 @@
-let we have list nums=[5,3,8,2,4,6,8,5,5,2,1,0,0,2,6,5,9,7]
+n=[4,7,8,0,5,6,1,2,5,4,7,8,5,9,6]
+# m=[0,1,2,3,4,5,6,7,8,9]
 
-# so we have to create dictiory that have unique values and each value stores the frequncy from the above list called nums
-# like dict={  5:4,
-#     3:1}
+# empty=[0]*10 #which make an empty array of size 10 form 0 to 9 because maximum elemnt is 9 and minimum element is 1
+
+
+# for el in n:
+#     empty[el]+=1
+
+# for ele in m:
+#     if ele<0 or ele>9:
+#         print(0)
+#     else :
+#         print(empty[ele])

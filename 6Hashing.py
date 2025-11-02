@@ -19,20 +19,30 @@
     # it start from 4 so it increses the value at index for in new empty error
 
 
+# n=[4,7,8,0,5,6,1,2,5,4,7,8,5,9,6]
+# m=[0,1,2,3,4,5,6,7,8,9]
+
+# empty=[0]*10 #which make an empty array of size 10 form 0 to 9 because maximum elemnt is 9 and minimum element is 1
+
+
+# for el in n:
+#     empty[el]+=1
+
+# for ele in m:
+#     if ele<0 or ele>9:
+#         print(0)
+#     else :
+#         print(empty[ele])
+
+# here time complexity becomes m+n not m*n which is way mor efficient
+# lets try with dictonary to store the values because here we assume what are the maximum and minimum number which range help us to make conditions and store the frequncy .But what if the number is n are random than what should you do?
+
 n=[4,7,8,0,5,6,1,2,5,4,7,8,5,9,6]
-m=[0,1,2,3,4,5,6,7,8,9]
 
-empty=[0]*10 #which make an empty array of size 10 form 0 to 9 because maximum elemnt is 9 and minimum element is 1
-
+emty_freq_map=dict()
 
 for el in n:
-    empty[el]+=1
+    emty_freq_map[el]=emty_freq_map.get(el,0)+1
+print(emty_freq_map)
 
-for ele in m:
-    if ele<0 or ele>9:
-        print(0)
-    else :
-        print(empty[ele])
-
-# here time complexity becomes m+n not m*n which is way mor efficient 
-        
+# so this will prints the freqency that really exits in n 
