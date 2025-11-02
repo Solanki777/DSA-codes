@@ -37,12 +37,29 @@
 # here time complexity becomes m+n not m*n which is way mor efficient
 # lets try with dictonary to store the values because here we assume what are the maximum and minimum number which range help us to make conditions and store the frequncy .But what if the number is n are random than what should you do?
 
-n=[4,7,8,0,5,6,1,2,5,4,7,8,5,9,6]
+# n=[4,7,8,0,5,6,1,2,5,4,7,8,5,9,6]
 
-emty_freq_map=dict()
+# emty_freq_map=dict()
 
-for el in n:
-    emty_freq_map[el]=emty_freq_map.get(el,0)+1
-print(emty_freq_map)
+# for el in n:
+#     emty_freq_map[el]=emty_freq_map.get(el,0)+1
+# print(emty_freq_map)
 
 # so this will prints the freqency that really exits in n 
+
+# lets go in string where m="asdfasdfdghfjfghdasdh" and n=["a","s","d","f","g","h","j"]
+# here the thing is same but for Makig empty array first we convert the charcheter into ASCII means ASCII of a is 97 like that than minus 97 it means 0 th index . So this is how we strore the frequency of a.
+
+m="asdfasdfdghfjfghdasdh"
+n=["a","s","d","f","g","h","j"]
+d=dict()
+
+for el in m:
+    asci=ord(el)
+    index=asci-97
+    d[index]=d.get(index,0)+1
+for el in n:
+
+print(d)
+
+# using ASCII you can perform a string having captial,small alphabets and with special sybols if you know the ascii values
