@@ -19,3 +19,5 @@
     
 # sum=rec(10)
 # print(sum)
+
+# time complextiy is O(n) and space complexity is also O(n) beccause of n time calling any every tme each call is strored in stack space so it also reqer n slots each for one call return.you call space complexity as stack space in this program
