@@ -36,3 +36,5 @@ def rec(arr,left,right):
 
 arr=[1,2,3,4,5,6,7,8,9]
 print(rec(arr,0,len(arr)-1))
+
+# time complity and space complexity is O(n/2) because their widd half operation of size of arry and that will stored in stack space . So it becomes O(n/2)
