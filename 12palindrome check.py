@@ -13,6 +13,8 @@
 #     else:
 #         print("no")
 
+# using loop the time complexity is n/2 which is n  and space complexity is 1 for stroring the value
+
 
 # str=input("enter check the string is palindrome or not :")
 # check(str,len(str)-1,0)
@@ -32,3 +34,5 @@
 #     print("string is palindrome")
 # else:
 #     print("string is not palindromen")
+
+# here the space compelexity is same as above example but space complexity becomes n for stack space
