@@ -48,7 +48,7 @@ def reverse_merge(left,right):
 
         else:
             result.append(right[j])
-            j=+1
+            j+=1
 
     while(i<m):
         result.append(left[i])
