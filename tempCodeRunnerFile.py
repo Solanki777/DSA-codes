@@ -1,13 +1,26 @@
-def bubble(arr):
-#     n=len(arr)
-#     for i in range(0,n-1):
-#         for j in range(0,n-1-i):
-#             if arr[j]>=arr[j+1]:
-#                 arr[j],arr[j+1]=arr[j+1],arr[j]
-#     print(arr)
+def quicksort(arr,law,high):
+#     i,j=law,high
+#     pivot=arr[law]
+#     while(i<j):
+#         while(i<=high and pivot>=arr[i] ):
+#             # order is important in condition if you flip them here then they says order out of bound because if pivot is greter than arr[i] then it check for i<= high which already goes out of bound 
+#             i+=1
+#         while(j>=law and pivot<arr[j]):
+#             j-=1
+#         if(i<j):
+#             arr[i],arr[j]=arr[j],arr[i]
+#     arr[j],arr[law]=arr[law],arr[j]
+#     return j
+
+# def partition(arr,law,high):
+#     if(law<high):
+#         mid=quicksort(arr,law,high)
+#         partition(arr,law,mid-1)
+#         partition(arr,mid+1,high)
+
+#     return arr
 
 
-
-
-# arr=[5,7,8,9,6,2,1,4,3]
-# bubble(arr)
+# arr=[9,8,7,6,5,4,3,2,1,0]
+# ans=partition(arr,0,len(arr)-1)
+# print(ans)
