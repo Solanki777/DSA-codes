@@ -94,5 +94,5 @@ def secound_large(arr):
 arr=[1,2,3,4,5,6,7,8,9,10]
 secound_large(arr)
 
-here the time complexity is O(n) and space complexity is 1
+# here the time complexity is O(n) and space complexity is 1
 
