@@ -1,1 +1,2 @@
-total duplicates are : 
+
+    arr[el]=last_element
