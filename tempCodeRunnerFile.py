@@ -1,2 +1,1 @@
-
-    arr[el]=last_element
+M+N) for travelig both loop and space complexity is O(N) where we take a new arry for merging sorted arry with uniq values
