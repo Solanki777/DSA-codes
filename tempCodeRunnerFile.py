@@ -1,1 +1,4 @@
-M+N) for travelig both loop and space complexity is O(N) where we take a new arry for merging sorted arry with uniq values
+if ans==-1:
+    print("answer not found")
+else: 
+    print("key is at index:",ans)
