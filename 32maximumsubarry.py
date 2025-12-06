@@ -22,7 +22,7 @@
 
 def kadan(nums):
     sum=0
-    max_sum=0
+    max_sum=float("=inf")
     for el in nums:
         sum+=el
         max_sum=max(sum,max_sum)
