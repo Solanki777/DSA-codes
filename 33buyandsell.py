@@ -31,4 +31,4 @@ price=[7,2,1,5,6,4,8]
 ans=find(price)
 print(ans)
 
-# time complexity is O(n) and space complexity is O(1)
+# time complexity is O(n) and space complexity is O(10)
