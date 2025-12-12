@@ -72,7 +72,7 @@ for i in range(rows_of_twod):
         result[j][i]=twod_matrix[i][j]
 print(result)
 
-# other way to get transpose of the matrix is
+# other easy way to get transpose of the matrix is
 
 matrix=[
     [1,2,3],
