@@ -1,1 +1,1 @@
-sum_arr-m_sum
+ement in twod_matrix represents rows and no of element insi
