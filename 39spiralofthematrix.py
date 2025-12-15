@@ -1,6 +1,6 @@
 def spiral(matrix):
-    if len(matrix)==1 and len(matrix)==0:
-        return matrix
+    if not matrix:
+        return []
     
     else:
         top=0
@@ -10,7 +10,7 @@ def spiral(matrix):
 
         result=[]
 
-        while(top<=bottom or left<=right):
+        while(top<=bottom and left<=right):
             for i in range(left,right+1):
                 result.append(matrix[top][i])
 
@@ -21,15 +21,21 @@ def spiral(matrix):
 
             right-=1
 
-            for i in range(right,left-1,-1):
-                result.append(matrix[bottom][i])
+            # for single raw arry top and button same so above loop will not run goes into this which makes duplicates
+            if top<=bottom:
 
-            bottom-=1
+                for i in range(right,left-1,-1):
+                    result.append(matrix[bottom][i])
 
-            for i in range(bottom,top-1,-1):
-                result.append(matrix[i][left])
+                bottom-=1
 
-            left+=1
+            # same way if matrix is single column 
+            if left<=right:
+
+                for i in range(bottom,top-1,-1):
+                    result.append(matrix[i][left])
+
+                left+=1
         
     return result
             
