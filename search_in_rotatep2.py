@@ -36,3 +36,5 @@ nums=[10,11,11,12,12,13,13,13,1,2,3,4]
 target=111
 ans=search(nums,target)
 print(ans)
+
+# time complexity is O(log n) in worst case it is O(N/2)==O(N) and space complexity is O(1)
