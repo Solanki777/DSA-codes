@@ -31,12 +31,10 @@
 # singly linkedlist operation
 # first we learn basic operation like append and travers
 
-
 class Node:
     def __init__(self,val):
         self.value=val
         self.next=None
-
 
 class Sinlgy:
     def __init__(self):
@@ -44,31 +42,34 @@ class Sinlgy:
 
     def append(self,data):
         new_node=Node(data)
-        if not self.head:
+        curr=self.head
+        if self.head is None:
             self.head=new_node
         else:
-            curr=self.head
             while curr.next is not None:
                 curr=curr.next
             curr.next=new_node
 
-    def travers(self):
-        if not self.head:
-            print("SLL is empty")
-
+    def traverse(self):
+        if self.head is None:
+            print("SSL is empty")
+        
         else:
             curr=self.head
             while curr is not None:
                 print(curr.value,end=" ")
                 curr=curr.next
-            print()
+            print("None")
 
+ssl = Sinlgy()
+ssl.traverse()          
+ssl.append(10)
+ssl.traverse()         
+ssl.append(20)
+ssl.append(30)
+ssl.append(40)
+ssl.traverse()
+        
 
-sll=Sinlgy()
-sll.append(12)
-sll.append(115)
-sll.append(124)
-sll.append(18)
-sll.travers()
 
 
