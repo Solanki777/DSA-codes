@@ -89,11 +89,46 @@ class Sinlgy:
         else:
             print("not found")
             
-
+    # # my method:time and space complexity is O(N)
+    # def reverse(self):
         
-
+    #     # for empty list
+    #     if self.head==None :
+    #         return
         
-            
+    #     # if head only
+    #     if self.head.next==None:
+    #         return self.head
+        
+    #     temp=[]
+    #     curr=self.head
+    #     while curr!=None:
+    #         temp.append(curr.value)
+    #         curr=curr.next
+
+    #     print(temp)
+        
+    #     curr=self.head
+    #     count=len(temp)-1
+    #     while curr!=None:
+    #         curr.value=temp[count]
+    #         count-=1
+    #         curr=curr.next
+    #     return self.head.value
+
+    # optimal time complexity is O(N) and space complexity is O(1)
+
+    def reverse(self):
+        curr=self.head
+        prev=None
+        
+        while curr is not None:
+            up=curr.next
+            curr.next=prev
+            prev=curr
+            curr=up
+        return prev
+
 
 ssl=Sinlgy()
 ssl.append(10)
@@ -104,6 +139,8 @@ ssl.insertat(3,30)
 ssl.travers()
 ssl.delateat(1)
 ssl.delateat(30)
+ssl.travers()
+print("head is : ",ssl.reverse())
 ssl.travers()
         
 
