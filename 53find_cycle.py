@@ -44,7 +44,7 @@ class Sinlgy:
     #         curr=curr.next
     #     print("cycle not detected")
 
-    # optimal solution
+    # optimal solution(floyd's):time complexity is O(n) in worst case but space complexity is O(1)
     def find_circle(self):
         slow=self.head
         fast=self.head
