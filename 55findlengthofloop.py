@@ -67,6 +67,7 @@ class Sinlgy:
 # Time & Space Complexity
 # Time: O(n)
 # Space: O(1)
+
 ssl=Sinlgy()
 ssl.append(5)
 ssl.append(9)
