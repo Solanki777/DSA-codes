@@ -1,4 +1,2 @@
-
-dl.insert_at_head(1)
-dl.insert_at_head(2)
-dl.insert_at_head(3)
+if curr.prev is None:
+                self.head=curr
