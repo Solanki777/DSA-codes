@@ -42,11 +42,4 @@
         
 
 
-
-# 2.Diffrenet types of operators:AND,OR,XOR,NOT,SHIFT
-# 3.Swapping two numbers
-# 4. Check if the ith bit is set or not
-# 5. Extract the ith bit
-# 6. Set the ith bit 
-# 7. Clear the ith bit
-# 8. Toggle the ith bit
+ 
