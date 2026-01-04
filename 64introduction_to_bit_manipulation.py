@@ -39,7 +39,5 @@
 #     return ans
 
 # print(binary2digit("10"))
-        
-
 
  
