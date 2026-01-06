@@ -40,4 +40,67 @@
 
 # print(binary2digit("10"))
 
- 
+# Some conceptual operations:
+
+# 1. Swap two numbers in O(1) time and space complexity
+
+# a=5
+# b=10
+
+# print("a is ",a^(a^b) )
+# print("b is ",(a^b)^b )
+
+
+# 2.check if ith bit is set or not
+
+# using left shift 
+# n=13
+# i=1
+
+# if n& (1<<i):
+#     print("ith bit is set")
+# else:
+#     print("ith bit is not set")
+
+# using right shift
+
+# n=13
+# i=2
+
+# if ((n>>i)&1)==1:
+#     print("bit is set")
+# else:
+#     print("bit is not set")
+
+
+# 3.set the ith bit
+# n=9
+# i=2
+# n=n|(1<<i)
+# print("after setting ith bit:",n)
+
+# 4.clear the ith bit
+# n=13
+# i=2 
+
+# n=n&(~(1<<i))
+# print("after clearing n th bit: ",n)
+
+# 5.toggle the ith bit
+# n=13
+# i=2
+
+# n=n^(1<<i)
+# print("after toggling i th bit of n ",n)
+
+# 6remove the last set bit from right side
+# n=16
+# print("after removing the ith bit answer is ",n&n-1)
+
+# 7.check if the number is power of 2
+n=16
+if n&(n-1)==0:
+    print("yes it is power of 2")
+else:
+    print("no it is not power of 2")
+
