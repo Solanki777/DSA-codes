@@ -1,5 +1,3 @@
-from collections import deque
-
 class TreeNode(object):
     def __init__(self,val=0,left=None,right=None):
         self.val=val
@@ -7,47 +5,32 @@ class TreeNode(object):
         self.right=right
 
 class Solution(object):
-    def maxLevelSum(self,root):
-        if root is None:
-            return 0
+    def maxProduct(self, root):
+        MOD = 10**9 + 7
+        self.max_product = 0
+
+        def totalsum(node):
+            if not node:
+                return 0
+            return node.val + totalsum(node.left) + totalsum(node.right)
+
+        total = totalsum(root)
         
-        queue=deque([root])
-        level=1
-        answer_level=1
-        max_sum=float('-inf')
+        def postorder(node):
+            if not node:
+                return 0
 
-        while queue:
-            size=len(queue)
-            level_sum=0
+            left_sum = postorder(node.left)
+            right_sum = postorder(node.right)
+            sub_sum = node.val + left_sum + right_sum
 
-            for _ in range(size):
-                node=queue.popleft()
-                level_sum+=node.val
+            product = sub_sum * (total - sub_sum)
+            self.max_product = max(self.max_product, product)
 
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
+            return sub_sum
 
-            if level_sum >max_sum:
-                max_sum=level_sum
-                answer_level=level
-            level+=1
-
-        return answer_level
-
-
-
-
-
-
-
-
-
-
-
-
-
+        postorder(root)
+        return self.max_product % MOD   # ✅ THIS WAS MISSING
 
 # ------------------ BIG TREE EXAMPLE ------------------
 
@@ -61,7 +44,6 @@ class Solution(object):
 #        /  \         \      \
 #       1    4         18     30
 #
-
 root = TreeNode(10)
 
 root.left = TreeNode(5)
@@ -79,7 +61,6 @@ root.left.left.right = TreeNode(4)
 root.right.left.right = TreeNode(18)
 root.right.right.right = TreeNode(30)
 
-sol=Solution()
-result=sol.maxLevelSum(root)
+sl=Solution()
+print(sl.maxProduct(root))
 
-print("Level wiht maximum sum: ", result)
