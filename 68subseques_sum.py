@@ -51,3 +51,6 @@ def sub(arr,index,curr_sum,target):
 
 sub(arr,0,0,target)
 print(ans)
+
+# Time: O(2^n)
+# Space: O(n)
