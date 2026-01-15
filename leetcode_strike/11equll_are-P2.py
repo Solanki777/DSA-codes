@@ -1,1 +1,1 @@
-squares=[[0,0,4],[2,1,4],[6,0,2]]
+# this is remain to solve after learning some consept i do thi solution leter
