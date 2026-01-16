@@ -15,7 +15,7 @@ def binary(index,l,flag):
         binary(index+1,l,False)
         l[index]="0"
 n=3
-l=[0]*n
+l=["0"]*n
 print(l)
 flag=True
 binary(0,l,flag)
