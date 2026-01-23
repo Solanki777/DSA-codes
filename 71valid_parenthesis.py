@@ -25,3 +25,5 @@ braces=[""]*(n*2)
 ans=[]
 s.brac(0,0,n,braces,ans)
 print(ans)
+
+# space complexity is 2n(stack space) ans time compelxity is 2^n
