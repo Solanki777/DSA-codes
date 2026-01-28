@@ -87,3 +87,6 @@ edges=[[0, 1, 1], [1, 2, 3], [0, 2, 6]]
 src = 2
 
 print(sort_path(edges,src,3))
+
+
+# here we uses data like heap and sorted list who keep data sorted for inserting and deleting the edge v so for that it is log v and also we do it for all edges(edge process for caluclation of distance) + vertices(inserting into heam like ooperations) so it becomes (E+V)* log V and sapace complexity is O(E+V) for adjacency list other also but major is it 
