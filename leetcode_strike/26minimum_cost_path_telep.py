@@ -48,6 +48,10 @@
 #         dp = [[[-1] * (k+1) for _ in range(col)] for _ in range(row)]
         
 #         return self.find_ans(dp,0,0,grid,0,k)
+
+
+# time complexity is O(k(row*col+maxval))
+# space complexity is O(R * C)
 class Solution:
     def minCost(self, grid, k):
         row= len(grid)  #rows
@@ -90,6 +94,8 @@ class Solution:
             for i in range(1,len(tel)):
                 tel[i]=min(tel[i],tel[i-1])
         return dp[0][0]
+    
+
 
 
 
