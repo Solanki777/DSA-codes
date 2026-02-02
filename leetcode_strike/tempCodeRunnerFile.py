@@ -1,1 +1,4 @@
-(nums[curr_ind]+nums[prev_ind],prev_ind)
+from collections import defaultdict
+# import heapq
+
+# class Solution(object):
