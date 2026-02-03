@@ -1,174 +1,193 @@
-# from collections import defaultdict
-# import heapq
+from collections import defaultdict
+import heapq
 
-# class Solution(object):
+class Solution(object):
 
     # TLE promblem
-    # def __init__(self):
-    #     self.dij_cache={}
-
-    # def dijkast(self,srcsub,trgsub,adjlis):
-
-    #     if (srcsub,trgsub) in self.dij_cache:
-    #         return self.dij_cache[(srcsub,trgsub)]
-
-
-
-    #     dist=defaultdict(lambda:float('inf'))
-    #     dist[srcsub]=0
-    #     min_heap=[(0,srcsub)]
-
-    #     while min_heap:
-
-    #         curr_dist,curr_node=heapq.heappop(min_heap)
-
-    #         if curr_dist>dist[curr_node]:
-    #             continue
-
-    #         for v,w in adjlis[curr_node]:
-    #             new_dist=curr_dist+w
-    #             if new_dist <dist[v]:
-    #                 heapq.heappush(min_heap,(new_dist,v))
-    #                 dist[v]=new_dist
-    #     self.dij_cache[(srcsub,trgsub)]=dist[trgsub]
-    #     return dist[trgsub]
-
-
-
-
-
-
-
-    # def solve(self,i,source,target,original,changed,cost,dp,adjlis,validlength):
-
-    #     if i==len(source):
-    #         return 0
-
-    #     if dp[i]!=-1:
-    #         return dp[i]
-
-    #     result=float('inf')
-    #     if source[i]==target[i]:
-    #         result=min(result,self.solve(i+1,source,target,original,changed,cost,dp,adjlis,validlength))
-            
-
-    #     for length in validlength:
-    #         if i+length > len(source):
-    #             break
-
-    #         srcsub=source[i:i+length]
-    #         trgsub=target[i:i+length]
-            
-    #         if srcsub not in adjlis:
-    #             continue
-            
-    #         pathcost=self.warshall(srcsub,trgsub,adjlis)
-
-    #         if pathcost==float('inf'):
-    #             continue
-
-    #         result=min(result,pathcost+self.solve(i+length,source,target,original,changed,cost,dp,adjlis,validlength))
-    #     dp[i]=result
-    #     return result
-
-
-    # def minimumCost(self, source, target, original, changed, cost):
-
-    #     dp=[-1] * (len(source)+1)
-    #     adjlis=defaultdict(list)
-
-    #     for el in range(len(original)):
-    #         adjlis[original[el]].append((changed[el],cost[el]))
-        
-    #     validlength=[]
-    #     for el in original:
-    #         validlength.append(len(el))
-        
-    #     validlength.sort()
-
-    #     ans=self.solve(0,source,target,original,changed,cost,dp,adjlis,validlength)
-    #     return -1 if ans==float('inf') else ans
+    def __init__(self):
+        self.dij_cache={}
     
-# improved version
-import heapq
-from collections import defaultdict
+    # dijkastra 
+    def dijkast(self,srcsub,trgsub,adjlis):
 
-class Solution:
+        # if there is similar solution which is exites than go for it 
+        if (srcsub,trgsub) in self.dij_cache:
+            return self.dij_cache[(srcsub,trgsub)]
+        
+
+        dist=defaultdict(lambda:float('inf'))
+        dist[srcsub]=0
+        min_heap=[(0,srcsub)]
+
+        while min_heap:
+
+            curr_dist,curr_node=heapq.heappop(min_heap)
+
+            if curr_dist>dist[curr_node]:
+                continue
+
+            for v,w in adjlis[curr_node]:
+                new_dist=curr_dist+w
+                if new_dist <dist[v]:
+                    heapq.heappush(min_heap,(new_dist,v))
+                    dist[v]=new_dist
+        self.dij_cache[(srcsub,trgsub)]=dist[trgsub]
+        return dist[trgsub]
+    
+    # solving 
+    def solve(self,i,source,target,original,changed,cost,dp,adjlis,validlength):
+
+        # if i reaches to last index retu zero 
+        if i==len(source):
+            return 0
+         
+        # if dp has similar solution than go for it 
+        if dp[i]!=-1:
+            return dp[i]
+        
+        # first cost is infinite defined
+        result=float('inf')
+        # if characters are same than not do anything increase the index than find the next solution
+        if source[i]==target[i]:
+            result=min(result,self.solve(i+1,source,target,original,changed,cost,dp,adjlis,validlength))
+            
+        # we tak only valid length strings only as substring
+        for length in validlength:
+            # if i reaches at position their no substring is posible
+            if i+length > len(source):
+                break
+            
+            # define the substrings
+            srcsub=source[i:i+length]
+            trgsub=target[i:i+length]
+            
+            # if substring has no cost to convert into target string then skip it 
+            if srcsub not in adjlis:
+                continue
+            
+            # find the sortes path usign dijkastra
+            pathcost=self.dijkast(srcsub,trgsub,adjlis)
+
+            # if there is no path skip it 
+            if pathcost==float('inf'):
+                continue
+            
+            # compare current result and other result 
+            result=min(result,pathcost+self.solve(i+length,source,target,original,changed,cost,dp,adjlis,validlength))
+        
+        # store result 
+        dp[i]=result
+        
+        # return the result 
+        return result
+
+
     def minimumCost(self, source, target, original, changed, cost):
 
-        BIG = 10**10
-        n = len(source)
+        # define the dp 
+        dp=[-1] * (len(source)+1)
 
-        # ---------- build graph ----------
-        adj = defaultdict(list)
-        valid_lengths = set()
+        # adjlist
+        adjlis=defaultdict(list)
+        
+        # fill the adjlist 
+        for el in range(len(original)):
+            adjlis[original[el]].append((changed[el],cost[el]))
+        
+        # use set to ignore duplicates which can cause TLE 
+        validlength=set()
+         
+        # fill it 
+        for el in original:
+            validlength.add(len(el))
+        
+        # sort it 
+        validlength=sorted(validlength)
+        
+        
+        ans=self.solve(0,source,target,original,changed,cost,dp,adjlis,validlength)
+        return -1 if ans==float('inf') else ans
 
-        for o, c, w in zip(original, changed, cost):
-            adj[o].append((c, w))
-            valid_lengths.add(len(o))
+# improved version
+# import heapq
+# from collections import defaultdict
 
-        valid_lengths = sorted(valid_lengths)
+# class Solution:
+#     def minimumCost(self, source, target, original, changed, cost):
 
-        # ---------- dijkstra cache ----------
-        dijk_cache = {}
+#         BIG = float('inf')
+#         n = len(source)
 
-        def dijkstra(start, end):
-            if (start, end) in dijk_cache:
-                return dijk_cache[(start, end)]
+#         # ---------- build graph ----------
+#         adj = defaultdict(list)
+#         valid_lengths = set()
 
-            pq = [(0, start)]
-            dist = {start: 0}
+#         for o, c, w in zip(original, changed, cost):
+#             adj[o].append((c, w))
+#             valid_lengths.add(len(o))
 
-            while pq:
-                cost_u, u = heapq.heappop(pq)
-                if u == end:
-                    break
+#         valid_lengths = sorted(valid_lengths)
 
-                for v, w in adj.get(u, []):
-                    new_cost = cost_u + w
-                    if v not in dist or new_cost < dist[v]:
-                        dist[v] = new_cost
-                        heapq.heappush(pq, (new_cost, v))
+#         # ---------- dijkstra cache ----------
+#         dijk_cache = {}
 
-            ans = dist.get(end, BIG)
-            dijk_cache[(start, end)] = ans
-            return ans
+#         def dijkstra(start, end):
+#             if (start, end) in dijk_cache:
+#                 return dijk_cache[(start, end)]
 
-        # ---------- dp ----------
-        dp = [-1] * (n + 1)
+#             pq = [(0, start)]
+#             dist = {start: 0}
 
-        def solve(i):
-            if i == n:
-                return 0
-            if dp[i] != -1:
-                return dp[i]
+#             while pq:
+#                 cost_u, u = heapq.heappop(pq)
+#                 if u == end:
+#                     break
 
-            res = BIG
+#                 for v, w in adj.get(u, []):
+#                     new_cost = cost_u + w
+#                     if v not in dist or new_cost < dist[v]:
+#                         dist[v] = new_cost
+#                         heapq.heappush(pq, (new_cost, v))
 
-            # same character
-            if source[i] == target[i]:
-                res = solve(i + 1)
+#             ans = dist.get(end, BIG)
+#             dijk_cache[(start, end)] = ans
+#             return ans
 
-            # substring replacement
-            for L in valid_lengths:
-                if i + L > n:
-                    break
+#         # ---------- dp ----------
+#         dp = [-1] * (n + 1)
 
-                s1 = source[i:i + L]
-                s2 = target[i:i + L]
+#         def solve(i):
+#             if i == n:
+#                 return 0
+#             if dp[i] != -1:
+#                 return dp[i]
 
-                if s1 not in adj:
-                    continue
+#             res = BIG
 
-                c = dijkstra(s1, s2)
-                if c != BIG:
-                    res = min(res, c + solve(i + L))
+#             # same character
+#             if source[i] == target[i]:
+#                 res = solve(i + 1)
 
-            dp[i] = res
-            return res
+#             # substring replacement
+#             for L in valid_lengths:
+#                 if i + L > n:
+#                     break
 
-        ans = solve(0)
-        return -1 if ans == BIG else ans
+#                 s1 = source[i:i + L]
+#                 s2 = target[i:i + L]
+
+#                 if s1 not in adj:
+#                     continue
+
+#                 c = dijkstra(s1, s2)
+#                 if c != BIG:
+#                     res = min(res, c + solve(i + L))
+
+#             dp[i] = res
+#             return res
+
+#         ans = solve(0)
+#         return -1 if ans == BIG else ans
 
 source = "abcdefgh"
 target = "acdeeghh"
