@@ -30,3 +30,7 @@ class Solution(object):
 candidates = [10,1,2,7,6,1,5]
 target = 8
 print(Solution().combinationSum2(candidates,target))
+
+# each element has two choice chosen or not so 2 and for n elemnent it becomes 2^n we have to check for every element so it becomes 2^n*n time complexity
+
+# for space complexity is O(N) which is you stack space and in extra we have result and list which can be negligible complaretively
