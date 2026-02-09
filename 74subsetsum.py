@@ -14,4 +14,4 @@ class Solution:
 		
 print(Solution().subsetSums([5,9,3]))
 
-space complexity is O(n) like if you see recursion tree there is n depth  so space complexity is O(n) and  time complexity is O(2^n)
+# space complexity is O(n) like if you see recursion tree there is n depth  so space complexity is O(n) and  time complexity is O(2^n)
