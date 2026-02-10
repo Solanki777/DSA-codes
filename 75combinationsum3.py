@@ -15,12 +15,10 @@ class Solution(object):
         ans.pop()
         self.solve(ele,sum,total,result,ans,index+1)
 
-
-
-
     def combinationSum3(self, k, n):
         result=[]
         self.solve(k,n,0,result,[],1)
         print(result)
 
 print(Solution().combinationSum3(3,9))
+# time complexity is O(1) because we take limited input also same space complexity 
