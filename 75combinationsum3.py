@@ -21,4 +21,4 @@ class Solution(object):
         print(result)
 
 print(Solution().combinationSum3(3,9))
-# time complexity is O(1) because we take limited input also same space complexity 
+# time complexity is O(1) because we take 7
