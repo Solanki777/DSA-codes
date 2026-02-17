@@ -54,7 +54,6 @@ class Solution:
         maze[row][col] = 1
 
     def ratInMaze(self, maze):
-        n = len(maze)
         result = []
         
         # If starting cell is blocked
@@ -66,43 +65,50 @@ class Solution:
     
 # by checking there is 1 or not 
 class Solution:
-    def solve(self, maze, row, col, ans, result):
-        n = len(maze)
-        
-        # Destination reached
-        if row == n - 1 and col == n - 1:
+    def solve(self,maze,col,row,ans,result):
+
+        # if there is no option of any where like below is zero above is zero so just return so we put at current postition zero as visited 
+        if maze[row][col]==0:
+            return 
+
+        # we reached at destination
+        if col==len(maze[0])-1 and row==len(maze)-1:
             result.append("".join(ans))
             return
         
-        # Mark current cell as visited
-        maze[row][col] = 0
+        # now it is visited
+        maze[row][col]=0
         
-        # Move Down (only if cell exists and is 1)
-        if row + 1 < n and maze[row + 1][col] == 1:
+        # move down 
+        if row+1<len(maze) and maze[row+1][col]==1:
             ans.append('D')
-            self.solve(maze, row + 1, col, ans, result)
+            self.solve(maze,col,row+1,ans,result)
             ans.pop()
         
-        # Move Left (only if cell exists and is 1)
-        if col - 1 >= 0 and maze[row][col - 1] == 1:
+        # move left
+        if col-1>=0 and maze[row][col-1]==1:
             ans.append('L')
-            self.solve(maze, row, col - 1, ans, result)
+            self.solve(maze,col-1,row,ans,result)
             ans.pop()
         
-        # Move Right (only if cell exists and is 1)
-        if col + 1 < n and maze[row][col + 1] == 1:
+        # move right
+        if col+1<len(maze[0]) and maze[row][col+1]==1:
             ans.append('R')
-            self.solve(maze, row, col + 1, ans, result)
+            self.solve(maze,col+1,row,ans,result)
             ans.pop()
         
-        # Move Up (only if cell exists and is 1)
-        if row - 1 >= 0 and maze[row - 1][col] == 1:
+        # move up 
+        if row-1>=0 and maze[row-1][col]==1:
             ans.append('U')
-            self.solve(maze, row - 1, col, ans, result)
+            self.solve(maze,col,row-1,ans,result)
             ans.pop()
         
-        # Unmark (Backtrack restore)
-        maze[row][col] = 1
+        # backtracing
+        maze[row][col]=1
+
+
+        
+
 
     def ratInMaze(self, maze):
         n = len(maze)
@@ -112,6 +118,7 @@ class Solution:
         if maze[0][0] == 0:
             return []
         
-        self.solve(maze, 0, 0, [], result)
+        self.solve(maze, 0, 0, [], result,)
         return sorted(result)
 
+# time complexity is 4*(row*col) and space compelxit (recursion depth)*n*n  stack space
