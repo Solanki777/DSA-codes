@@ -1,51 +1,73 @@
 class myQueue:
     def __init__(self, n):
-        self.arry=[]
-        self.size=n
+        self.arry = []
+        self.size = n   # maximum capacity of queue
 
-    
     def isEmpty(self):
-        if len(self.arry)==0:
-            return True
-        return False
-        
-        # Check if queue is empty
+        return len(self.arry) == 0
 
-    
     def isFull(self):
-        if len(self.arry)==self.size:
-            return True
-        return False
-        # Check if queue is full
+        return len(self.arry) == self.size
 
-    
     def enqueue(self, x):
-        if len(self.arry)==self.size:
+        if self.isFull():
+            print("Queue is Full! Cannot enqueue:", x)
             return -1
         self.arry.append(x)
-        return
-        # Enqueue
+        print(x, "enqueued")
+        return 0
 
-    
     def dequeue(self):
-        if len(self.arry)==0:
+        if self.isEmpty():
+            print("Queue is Empty! Cannot dequeue")
             return -1
-        self.arry.pop(0)
-        return
-        # Dequeue
+        removed = self.arry.pop(0)
+        print(removed, "dequeued")
+        return removed
 
-    
     def getFront(self):
-        if len(self.arry)==0:
+        if self.isEmpty():
             return -1
         return self.arry[0]
-        # Get front element
-       
-    
+
     def getRear(self):
-        if len(self.arry)==0:
+        if self.isEmpty():
             return -1
-        return self.arry[len(self.arry)-1]
-        # Get rear element 
-        
-# only dqueue has time complexity of O(n) and all other operation has time and space omplexity of O(!)
+        return self.arry[-1]
+
+
+# 🔹 Creating Queue of size 3
+q = myQueue(3)
+
+# 🔹 Calling isEmpty()
+print("Is Queue Empty?", q.isEmpty())   # True
+
+# 🔹 Calling enqueue()
+q.enqueue(10)
+q.enqueue(20)
+q.enqueue(30)
+
+# 🔹 Calling isFull()
+print("Is Queue Full?", q.isFull())     # True
+
+# 🔹 Calling getFront()
+print("Front Element:", q.getFront())
+
+# 🔹 Calling getRear()
+print("Rear Element:", q.getRear())
+
+# 🔹 Calling dequeue()
+q.dequeue()
+
+# 🔹 State after one dequeue
+print("Front after dequeue:", q.getFront())
+print("Rear after dequeue:", q.getRear())
+
+# 🔹 Enqueue again
+q.enqueue(40)
+
+# 🔹 Final queue operations
+print("Final Queue Front:", q.getFront())
+print("Final Queue Rear:", q.getRear())
+print("Is Queue Empty?", q.isEmpty())
+print("Is Queue Full?", q.isFull())
