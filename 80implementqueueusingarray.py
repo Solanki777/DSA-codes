@@ -72,3 +72,5 @@ print("Final Queue Rear:", q.getRear())
 print("Is Queue Empty?", q.isEmpty())
 print("Is Queue Full?", q.isFull())
 
+
+# inserting and poping element takes O(n) time complexity
