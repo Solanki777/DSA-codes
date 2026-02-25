@@ -34,7 +34,7 @@ class MinStack:
         temp=self.stack[-1]
         return temp[0]
         
-
+    # time complexity is O(1)
     def getMin(self) -> int:
         if len(self.stack)==0:
             return -1
