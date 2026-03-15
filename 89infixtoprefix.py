@@ -12,12 +12,12 @@ class Solution():
         # Step 1: reverse string + swap brackets
         rev = ""
         for ch in s:
-            if ch == '(':
-                rev = ')' + rev
-            elif ch == ')':
-                rev = '(' + rev
+            if ch=="(":
+                rev=")"+rev
+            elif ch==")":
+                rev="("+rev
             else:
-                rev = ch + rev
+                rev=ch+rev
 
         stack = []
         ans = []
@@ -35,10 +35,11 @@ class Solution():
                     ans.append(stack.pop())
                 stack.pop()
             
-            else:  # operator
-
-                
-                while stack and self.pres(stack[-1]) > self.pres(ch):
+            else:
+                # first check the stack in not empty
+                # then check presidens all other as presidens from left two right accept ^
+                # so when ^ comes it not pop other ^ inside the stack it will places upon it 
+                while stack and ( self.pres(stack[-1]) > self.pres(ch) or ( self.pres(stack[-1])==self.pres(ch) and ch!="^")):
                     ans.append(stack.pop())
                 stack.append(ch)
         
