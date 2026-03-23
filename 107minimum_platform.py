@@ -35,3 +35,6 @@ class Solution:
                 pt-=1
                 j+=1
         return max_platfrom
+
+# time complexity is O(n)
+# space complexity is O(n) 
