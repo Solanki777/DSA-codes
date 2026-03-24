@@ -4,6 +4,7 @@ class Node:
         self.next=None
         self.prev=None
 
+
 class Doubly:
     def __init__(self):
         self.head=None
@@ -16,6 +17,7 @@ class Doubly:
             self.head.prev=new_node
             new_node.next=self.head
             self.head=new_node
+
 
     def insert_at_loc(self,pos,value):
         new_node=Node(value)
@@ -45,6 +47,7 @@ class Doubly:
         if next_node:
             next_node.prev=new_node
 
+
     def delete_at_head(self):
 
         # empty list
@@ -59,6 +62,7 @@ class Doubly:
         
         self.head=self.head.next
         self.head.prev=None
+
 
     def delete_at_last(self):
 
@@ -76,7 +80,8 @@ class Doubly:
         while curr.next is not None:
             curr=curr.next
         curr.prev.next=None
-        
+
+
     def delete_at_loc(self,pos):
 
         if self.head is None:
@@ -105,11 +110,6 @@ class Doubly:
         
         curr.prev.next=curr.next
         curr.next.prev=curr.prev
-
-
-        
-
-        
 
 
     def travers(self):
