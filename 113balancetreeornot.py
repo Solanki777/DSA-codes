@@ -19,7 +19,7 @@ class Solution:
             return -1
         return 1+max(leftheight,rightheight)
     
-    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+    def isBalanced(self, root) -> bool:
         ans=self.solve(root)
         if ans==-1:
             return False
