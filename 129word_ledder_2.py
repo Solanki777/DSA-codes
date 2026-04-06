@@ -40,4 +40,6 @@ class Solution:
             wordset -= level_visited
         
         return result
+    
+# Time complexity is O(26*l*n*k)=O(l*n^2) and space complexity isO (N^2)
         
