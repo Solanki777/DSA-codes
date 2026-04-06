@@ -29,3 +29,4 @@ class Solution:
                         wordset.remove(new_word)
         
         return 0
+# O(n*l*26) time complexity and space complexity is O(n)
