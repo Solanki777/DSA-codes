@@ -1,7 +1,9 @@
 # step 1: iterate each one non visited 
 # step 2: make it visited
 # step 3: find non visited nodes from it's surrounding of current node
-# step 4: after completing dfs put it in stack 
+# step 4: after completing dfs put the current node in stack
+#step 5: if thre is deadend then make it 2 so it means there is no further way to go
+
 class Solution:
     def topoSort(self, V, edges):
         visited=[0 for _ in range(V)]
