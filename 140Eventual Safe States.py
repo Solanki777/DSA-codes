@@ -36,7 +36,9 @@ class Solution:
                     queue.append(neg)
         
         return sorted(result)
-    
+# time and space complexity is O(V+E)
+
+
 # using dfs
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
@@ -68,6 +70,6 @@ class Solution:
         
         return sorted(resutl)
 
-
+# time compelxity is O(V+E) and space complexity is O(V)
 
         
