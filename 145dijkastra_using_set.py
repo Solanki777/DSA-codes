@@ -26,4 +26,4 @@ class Solution:
                     s.add((new_dist,neg))
         return distance
 
-# time complexity is O(V^2) sorting set to get minimul distance node and space complexity is O(V+E)
+# time complexity is O(V^2) sorting set to get minimul distance node and space complexity is O(V+E) so that's why here we use heap insted of set 
