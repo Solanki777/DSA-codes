@@ -1,4 +1,5 @@
-#User function Template for python3
+
+# here it sournds like recursion (dfs) but if we use it than it got lost in first iteration in deep for finding answer so there is no guarntee of getting answer that's why we have to traverse level wise so we use bfs 
 
 from typing import List
 from collections import deque
