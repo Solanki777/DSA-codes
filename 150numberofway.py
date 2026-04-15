@@ -29,6 +29,5 @@ class Solution:
         return ways[n-1]
 
     
-# Time: O((V + E) log V)
-# Space: O(V + E)
-       
+# Time complexity: O((V + E) log V)
+# Space complexity: O(V + E)
