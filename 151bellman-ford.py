@@ -29,7 +29,7 @@ class Solution:
             if dist[u]!=inf and dist[u]+d<dist[v]:
                 return [-1]
 
-        return dist        
+        return dist
         
 
 # Time complexity is (V−1)×E=O(VE) and space complexity is O(V)
