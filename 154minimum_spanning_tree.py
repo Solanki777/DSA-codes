@@ -94,7 +94,4 @@ class Solution:
         
         return mst_weight
 
-
-
-
 # Time complexity is O(ElogE) and space complexity is O(V+E)
