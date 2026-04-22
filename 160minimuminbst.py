@@ -5,7 +5,6 @@ class Node:
         self.left = None
         self.right = None
 """
-
 class Solution:
     def minValue(self, root):
         if root.left is None:
