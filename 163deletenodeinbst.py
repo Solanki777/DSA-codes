@@ -61,3 +61,5 @@ class Solution:
             parent.left=deletion(curr)
         
         return root
+
+# time complexity is O(h) if tree is one sided else O(logn) and space complexity is O(1)
