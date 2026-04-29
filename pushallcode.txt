@@ -1,6 +1,0 @@
-git config --global user.name "Solanki777"
-git config --global user.email "solankimaheshkhash7@gmail.com"
-git remote add origin https://github.com/username/repo.git
-git add .
-git commit -m "DSA"
-git push -u origin main
