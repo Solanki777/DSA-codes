@@ -33,8 +33,6 @@ class Solution:
                 arr[parent],arr[ind]=arr[ind],arr[parent]
                 self.heapifyup(arr,parent)
 
-
-
     def heapify(self,arr,ind,val):
         arr[ind]=val
         parent=(ind-1)//2
