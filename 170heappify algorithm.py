@@ -26,17 +26,19 @@ class Solution:
             self.heapifydown(arr,largerel_ind)
     
     def heapifyup(self,arr,ind):
-        parent=(ind-1)//2
-        if ind>0 and arr[parent]<arr[ind]:
-            arr[parent],arr[ind]=arr[ind],arr[parent]
-            self.heapifyup(arr,parent)
+        
+        if ind>0:
+            parent=(ind-1)//2
+            if arr[parent]<arr[ind]:
+                arr[parent],arr[ind]=arr[ind],arr[parent]
+                self.heapifyup(arr,parent)
 
 
 
     def heapify(self,arr,ind,val):
         arr[ind]=val
         parent=(ind-1)//2
-        if ind>0 and arr[ind]>arr[ind]>arr[parent]:
+        if ind>0 and arr[ind]>arr[parent]:
             self.heapifyup(arr,ind)
         else:
             self.heapifydown(arr,ind)
