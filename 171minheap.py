@@ -32,3 +32,5 @@ class Solution:
             self.heapdown(arr,ind)
         elif ind>0 and arr[parent]>arr[ind]:
             self.heapup(arr,ind)
+
+# TIme and space complexity is O(logn)
