@@ -34,3 +34,14 @@ class Solution:
             self.heapup(arr,ind)
 
 # TIme and space complexity is O(logn)
+
+# implementing mean heap operations 
+class Solu:
+    def __init__(self,arr,count):
+        self.arr=[]
+        self.count=0
+    
+    def insertion(self,arr,count,val):
+        sl=Solution()
+        sl.minheap(arr,val,count)
+        count+=1
