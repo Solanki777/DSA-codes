@@ -36,12 +36,65 @@ class Solution:
 # TIme and space complexity is O(logn)
 
 # implementing mean heap operations 
-class Solu:
-    def __init__(self,arr,count):
+
+class Solution:
+    def __init__(self):
         self.arr=[]
         self.count=0
     
-    def insertion(self,arr,count,val):
-        sl=Solution()
-        sl.minheap(arr,val,count)
-        count+=1
+    def heapifyup(self,arr,ind):
+        parent=(ind-1)//2
+        if ind>0 and arr[ind]<arr[parent]:
+            arr[ind],arr[parent]=arr[parent],arr[ind]
+            self.heapifyup(arr,parent)
+        
+    def heapifydown(self,arr,ind):
+        smalle=ind
+        n=len(arr)
+        left=2*ind+1
+        right=2*ind+2
+
+        if left<n and arr[left]< arr[smalle]:
+            smalle=left
+        if right<n and arr[right] < arr[smalle]:
+            smalle=right
+        
+        if smalle!=ind:
+            arr[smalle],arr[ind]=arr[ind],arr[smalle]
+            self.heapifydown(arr,smalle)
+    
+    def initialization(self):
+        self.arr.clear()
+        self.count=0
+    
+    def insert(self,key):
+        self.arr.append(key)
+        self.heapifyup(self.arr,self.count)
+        self.count+=1
+    
+    def changekey(self,index,new_val):
+        if self.arr[index] > new_val:
+            self.arr[index]=new_val
+            self.heapifyup(self.arr,index)
+        else:
+            self.arr[index]=new_val
+            self.heapifydown(self.arr,index)
+    
+    def extracmin(self):
+        if self.count==0:
+            return None
+        ele=self.arr[0]
+        self.arr[0],self.arr[self.count-1]=self.arr[self.count-1],self.arr[0]
+        self.arr.pop()
+        self.count-=1
+        if self.count>0:
+            self.heapifydown(self.arr,0)
+        return ele
+    
+    def isempty(self):
+        return self.count==0
+    def getMin(self):
+        return self.arr[0] if self.count>0 else None
+    def heapsize(self):
+        return self.count
+    
