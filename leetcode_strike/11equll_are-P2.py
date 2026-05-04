@@ -1,1 +1,0 @@
-# this is remain to solve after learning some consept i do thi solution leter
