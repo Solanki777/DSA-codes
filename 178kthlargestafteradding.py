@@ -23,4 +23,4 @@ class KthLargest:
         return self.heap[0]
         
 
-# time complexity is O(nlogk) for __init__ and for add() O(logk) and space complexity is O(k)
+# time complexity is O(nlogk) for __init__ and for add() O(logk)1 and space complexity is O(k)
