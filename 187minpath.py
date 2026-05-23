@@ -65,4 +65,28 @@ class Solution:
         return dp[n-1][m-1]
 
 
+# improved space complexity
+class Solution:
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        m=len(grid[0])
+        n=len(grid)
+        prev=[0]*m
+        curr=[-1]*m
+        curr[0]=grid[0][0]
+        for i in range(n):
+            for j in range(m):
+                if i==0 and j==0:
+                    continue
+                
+                down=float('inf')
+                right=float('inf')
+                if i>0:
+                    down=prev[j]
+                if j>0:
+                    right=curr[j-1]
+
+                curr[j]=grid[i][j]+min(down,right)
+            prev=curr
+        return prev[m-1]
+
        
