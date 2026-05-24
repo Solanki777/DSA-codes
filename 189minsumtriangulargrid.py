@@ -41,3 +41,54 @@ class Solution:
         # first pick row by row then after picking  read each row length puth that times -1
         dp=[[-1]*len(row) for row in triangle]
         return self.recursion(0, 0, triangle, n,dp)
+
+
+# tabulation: time complexity and space complexxity is O(n^2)
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        n = len(triangle)
+        dp=[[-1]*len(row) for row in triangle]
+        n=len(triangle)
+        for i in range(n):
+            for j in range(i+1):
+                if i==0 and j==0:
+                    dp[0][0]=triangle[i][j]
+                    continue
+                if j<i:
+                    down=dp[i-1][j]
+                diagonal=float('inf')
+                if j>0:
+                    diagonal=dp[i-1][j-1]
+                
+                dp[i][j]=triangle[i][j]+min(down,diagonal)
+        
+        return min(dp[n-1])
+
+# space optimization : time complexity is O(n^2) and space complexity is O(n)
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        n = len(triangle)
+        prev=[-1] * n 
+        n=len(triangle)
+
+        for i in range(n):
+            curr=[-1]*n
+            for j in range(i+1):
+
+                if i==0 and j==0:
+                    curr[0]=triangle[i][j]
+                    continue
+
+                if j<i:
+                    down=prev[j]
+                diagonal=float('inf')
+
+                if j>0:
+                    diagonal=prev[j-1]
+                
+                curr[j]=triangle[i][j]+min(down,diagonal)
+            prev=curr
+        return min(prev)
+
+                    
+
