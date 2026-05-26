@@ -22,3 +22,35 @@ class Solution:
             ans=min(ans,self.recursion(0,j,r,c,matrix))
 
         return ans
+
+# dp + recurison : time complexity is O(r*c) and space complexity is (r*c + r recursive stake)
+class Solution:
+    def recursion(self,i,j,r,c,matrix,dp):
+        if j<0 or j>=c:
+            return float('inf')
+        
+        if dp[i][j]!=-1:
+            return dp[i][j]
+
+        if i==r-1:
+            return matrix[i][j]
+
+        down_left=self.recursion(i+1,j-1,r,c,matrix,dp)
+        down=self.recursion(i+1,j,r,c,matrix,dp)
+        down_right=self.recursion(i+1,j+1,r,c,matrix,dp)
+
+        dp[i][j]= matrix[i][j]+min(down_left,down,down_right)
+        return dp[i][j]
+
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+
+        r,c=len(matrix),len(matrix[0])
+        dp=[[-1 for _ in range(c)] for _ in range(r)]
+        ans=float('inf')
+
+        for j in range(c):
+            ans=min(ans,self.recursion(0,j,r,c,matrix,dp))
+
+        return ans
+
+    
