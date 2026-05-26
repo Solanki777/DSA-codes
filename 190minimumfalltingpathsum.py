@@ -53,4 +53,56 @@ class Solution:
 
         return ans
 
+# tabulation solution time and space complexity is O(r*c)
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+
+        r,c=len(matrix),len(matrix[0])
+        dp=[[-1 for _ in range(c)] for _ in range(r)]
+
+        for i in range(c):
+            dp[0][i]=matrix[0][i]
+
+        for i in range(1,r):
+            for j in range(c):
+                
+                movedown=matrix[i-1][j]
+
+                moveright=float('inf')
+                if j-1>0:
+                    moveright=matrix[i-1][j-1]
+                
+                moveleft=float('inf')
+                if j+1<c:
+                    moveleft=matrix[i-1][j+1]
+                dp[i][j]=min(movedown,moveleft,moveright)
+        
+        return min(dp[r-1])
     
+# optimized space complexity to O(c)
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+
+        r,c=len(matrix),len(matrix[0])
+        prev=[-1 for _ in range(c)] 
+
+        for i in range(c):
+            prev[i]=matrix[0][i]
+
+        for i in range(1,r):
+            curr=[-1]*c
+            for j in range(c):
+                
+                movedown=prev[j]
+
+                moveright=float('inf')
+                if j-1>=0:
+                    moveright=prev[j-1]
+                
+                moveleft=float('inf')
+                if j+1<c:
+                    moveleft=prev[j+1]
+                curr[j]=matrix[i][j]+min(movedown,moveleft,moveright)
+            prev=curr
+        
+        return min(prev)
