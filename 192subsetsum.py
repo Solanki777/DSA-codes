@@ -1,37 +1,67 @@
+# time and space comlexity is O(2*n) and space compelxity is O(n)
 class Solution:
-    def recursion(self,arr,sum,index,current_sum):
-        if sum==current_sum:
+    def recursion(self,arr,sum,index,curr_sum):
+        if curr_sum==sum:
             return True
-        if index>=len(arr) or current_sum>sum:
+        if index>len(arr)-1:
             return False
+        if curr_sum>sum:
+            return False
+     
         
-        take=self.recursion(arr,sum,index+1,arr[index]+current_sum)
-        nottake=self.recursion(arr,sum,index+1,current_sum)
+        pick=self.recursion(arr,sum,index+1,curr_sum+arr[index])
+        notpick=self.recursion(arr,sum,index+1,curr_sum)
 
-        return take or nottake
-        
+        return pick or notpick
     def isSubsetSum (self, arr, sum):
         return self.recursion(arr,sum,0,0)
-    
-# dp
+
+# intro to dp
 class Solution:
-    def recursion(self,arr,sum,index,current_sum,dp):
-        if sum==current_sum:
+    def recursion(self,arr,sum,index,curr_sum,dp):
+
+        if (curr_sum,index) in dp:
+            return dp[(curr_sum,index)]
+        
+        if curr_sum==sum:
             return True
-        if index>=len(arr) or current_sum>sum:
+        if index>len(arr)-1:
+            return False
+        if curr_sum>sum:
             return False
         
-        if (index,current_sum) in dp:
-            return dp[(index,current_sum)]
-        
-        take=self.recursion(arr,sum,index+1,arr[index]+current_sum,dp)
-        nottake=self.recursion(arr,sum,index+1,current_sum,dp)
+        pick=self.recursion(arr,sum,index+1,curr_sum+arr[index],dp)
+        notpick=self.recursion(arr,sum,index+1,curr_sum,dp)
 
-        dp[(index,current_sum)]=take or nottake
+        dp[(curr_sum,index)]=pick or notpick
 
-        return dp[(index,current_sum)]
-        
+        return dp[(curr_sum,index)]
     def isSubsetSum (self, arr, sum):
         dp={}
         return self.recursion(arr,sum,0,0,dp)
+
+
+# tablation : time and space complexity len(arr) * sum 
+class Solution:
+    def isSubsetSum(self,arr,sum):
+        dp=[[False for _ in range(sum+1)] for _ in range(len(arr))]
+        n=len(arr)
         
+        for index in range(n):
+            dp[index][0]=True
+        
+        if sum>=arr[0]:
+            dp[0][arr[0]]=True
+        
+        for index in range(1,n):
+            for  target in range(1,sum+1):
+                note_take=dp[index-1][target]
+                take=False
+
+                if arr[index]<=target:
+                    take=dp[index-1][target-arr[index]]
+                dp[index][target]=take or note_take
+
+        return dp[n-1][sum]
+
+       
