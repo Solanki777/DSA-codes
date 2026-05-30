@@ -64,4 +64,28 @@ class Solution:
 
         return dp[n-1][sum]
 
+# space complexity is improved to O(sum)
+class Solution:
+    def isSubsetSum(self,arr,sum):
+        prev=[False for _ in range(sum+1)] 
+        n=len(arr)
+        prev[0]=True
+        
+        if sum>=arr[0]:
+            prev[arr[0]]=True
+        
+        for index in range(1,n):
+            curr=[False for _ in range(sum+1)]
+            curr[0]=True
+            for  target in range(1,sum+1):
+                note_take=prev[target]
+                take=False
+
+                if arr[index]<=target:
+                    take=prev[target-arr[index]]
+                curr[target]=take or note_take
+            prev=curr
+
+        return prev[sum]
+
        
