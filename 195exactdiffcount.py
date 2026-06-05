@@ -97,4 +97,28 @@ class Solution:
 			prev=curr
 		return prev[target]
 
+# space complexity to 1d arry 
+class Solution:
+	def perfectSum(self, arr, target):
 		
+		prev=[0 for _ in range(target+1)] 
+		
+		if arr[0]==0:
+			prev[0]=2
+		else:
+			prev[0]=1
+		
+		if arr[0]!=0 and arr[0]<=target:
+			prev[arr[0]]=1
+
+		for index in range(1,len(arr)):
+		
+			for total in range(target,arr[index]-1,-1):
+				if arr[index]>total:
+					pick=0
+				else:
+					pick=prev[total-arr[index]]
+				not_pick=prev[total]
+				prev[total]=pick+not_pick
+		
+		return prev[target]
