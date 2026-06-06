@@ -22,5 +22,16 @@ class Solution:
             if sub in set2:
                 ans=max(ans,len(sub))
         return ans
+    
+# recursion and compare at the same time : time complexity is O(2^(m+n)) and space complexity is O(max(len(m) , len(n)))
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        def recursion(ind1,ind2):
+            if ind1<0 or ind2<0:
+                return 0
+            if text1[ind1]==text2[ind2]:
+                return 1+recursion(ind1-1,ind2-1)
+            return max(recursion(ind1-1,ind2),recursion(ind1,ind2-1))
+        return recursion(len(text1)-1,len(text2)-1)
 
         
