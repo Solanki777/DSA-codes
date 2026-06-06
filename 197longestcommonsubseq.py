@@ -52,3 +52,58 @@ class Solution:
             return dp[ind1][ind2]
         return recursion(len(text1)-1,len(text2)-1)
 
+# tabulation time and space complexity is O(m*n)
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        dp=[[0 for _ in range(len(text2))] for _ in range(len(text1))]
+
+        for i in range(len(text2)):
+            if text2[i]==text1[0]:
+                dp[0][i]=1
+            elif i>0:
+                dp[0][i]=dp[0][i-1]
+
+        for i in range(len(text1)):
+            if text1[i]==text2[0]:
+                dp[i][0]=1
+            elif i>0:
+                dp[i][0]=dp[i-1][0]
+
+        for i in range(1,len(text1)):
+            for j in range(1,len(text2)):
+                if text1[i]==text2[j]:
+                    dp[i][j]=1+dp[i-1][j-1]
+                else:
+                    dp[i][j]=max(dp[i-1][j],dp[i][j-1])
+        return dp[len(text1)-1][len(text2)-1]
+
+# space complexity is improved
+class Solution:
+    def longestCommonSubsequence(self,text1:str,text2:str)->int:
+        n,m=len(text1),len(text2)
+
+        dp=[0]*m
+
+        for j in range(m):
+            if text2[j]==text1[0]:
+                dp[j]=1
+            elif j>0:
+                dp[j]=dp[j-1]
+
+        for i in range(1,n):
+            curr=[0]*m
+
+            if text1[i]==text2[0]:
+                curr[0]=1
+            else:
+                curr[0]=dp[0]
+
+            for j in range(1,m):
+                if text1[i]==text2[j]:
+                    curr[j]=1+dp[j-1]
+                else:
+                    curr[j]=max(dp[j],curr[j-1])
+
+            dp=curr
+
+        return dp[m-1]
