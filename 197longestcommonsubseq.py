@@ -34,4 +34,21 @@ class Solution:
             return max(recursion(ind1-1,ind2),recursion(ind1,ind2-1))
         return recursion(len(text1)-1,len(text2)-1)
 
-        
+# time and space complexity is O(m*n) in addition of space complexity of O(m+n)
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        dp=[[-1 for _ in range(len(text2))] for _ in range(len(text1))]
+        def recursion(ind1,ind2):
+            if ind1<0 or ind2<0:
+                return 0
+            
+            if dp[ind1][ind2]!=-1:
+                return dp[ind1][ind2]
+            
+            if text1[ind1]==text2[ind2]:
+                dp[ind1][ind2]= 1+recursion(ind1-1,ind2-1)
+            else:
+                dp[ind1][ind2]= max(recursion(ind1-1,ind2),recursion(ind1,ind2-1))
+            return dp[ind1][ind2]
+        return recursion(len(text1)-1,len(text2)-1)
+
