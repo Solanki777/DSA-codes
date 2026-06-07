@@ -13,7 +13,7 @@ class Solution:
         sub1=[]
         sub2=[]
         self.subseqgenerator(text1,0,"",sub1)
-        self,self.subseqgenerator(text2,0,"",sub2)
+        self.subseqgenerator(text2,0,"",sub2)
 
         set2=set(sub2)
         ans=0
