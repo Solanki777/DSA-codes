@@ -32,4 +32,24 @@ class Solution:
                     dp[i][j]=max(dp[i-1][j],dp[i][j-1])
                 
         return dp[len(s)][len(s)]
-        
+    
+# space complexity is optimized
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        rev=s[::-1]
+
+        dp=[0 for _ in range(len(s)+1)] 
+
+        for i in range(1,len(s)+1):
+            prev_diag=0
+
+            for j in range(1,len(s)+1):
+                temp=dp[j]
+                                
+                if s[i-1]==rev[j-1]:
+                    dp[j]=prev_diag+1
+                else:
+                    dp[j]=max(dp[j],dp[j-1])
+                prev_diag=temp
+                
+        return dp[len(s)]
