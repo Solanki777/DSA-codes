@@ -69,3 +69,41 @@ class Solution:
 
         return dp[0][0][1]
         
+    
+# space optimization 
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        ahed=[[0,0] for _ in range(3)]
+
+        for index in range(len(prices)-1,-1,-1):
+            curr=[[0,0] for _ in range(3)]
+            for tra in range(2):
+                
+                buy=-prices[index]+ahed[tra][0]
+                not_buy=ahed[tra][1]
+                curr[tra][1]=max(buy,not_buy)
+                
+            
+                sell=prices[index] +ahed[tra+1][1]
+                not_sell=ahed[tra][0]
+                curr[tra][0]=max(sell,not_sell)
+            ahed=curr
+
+        return ahed[0][1]
+
+# further more space optimization 
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        buy1=float('-inf')
+        sell1=0
+        buy2=float('-inf')
+        sell2=0
+
+        for price in prices:
+            buy1=max(buy1, -price)
+            sell1=max(sell1, buy1 + price)
+
+            buy2=max(buy2, sell1 - price)
+            sell2=max(sell2, buy2 + price)
+
+        return sell2
