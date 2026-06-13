@@ -49,4 +49,23 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         dp=[[[-1,-1] for _ in range(3)] for _ in range(len(prices))]
         return self.recursion(0,0,prices,1,dp)
+
+# tabulation time complexity and space complexity is O(6n)
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        dp=[[[0,0] for _ in range(4)] for _ in range(len(prices)+1)]
+
+        for index in range(len(prices)-1,-1,-1):
+            for tra in range(2):
+                
+                buy=-prices[index]+dp[index+1][tra][0]
+                not_buy=dp[index+1][tra][1]
+                dp[index][tra][1]=max(buy,not_buy)
+                
+            
+                sell=prices[index] +dp[index+1][tra+1][1]
+                not_sell=dp[index+1][tra][0]
+                dp[index][tra][0]=max(sell,not_sell)
+
+        return dp[0][0][1]
         
