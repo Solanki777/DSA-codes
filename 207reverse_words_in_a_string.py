@@ -14,6 +14,14 @@ class Solution:
                 i-=1
             ans.append(s[i+1:j+1])
         return " ".join(ans)
-    
-# space optimization
+
+
+# time complexity is O(3n) for splitting  and reverse and join and space comlexity is O(n) 
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        words=s.split()
+        words.reverse()
+        return " ".join(words)
+            
+
            
