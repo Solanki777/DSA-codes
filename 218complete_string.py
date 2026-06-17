@@ -1,3 +1,27 @@
+# time compelxity is (O(l*word)*n (for slicing))   space complexity is O(M)
+
+def completeString(n: int, a: List[str])-> str:
+    st=set(a)
+    ans=""
+
+    for word in a:
+        valid=True
+        
+        for i in range(1,len(word)+1):
+            prefix=word[:i]
+            if prefix not in st:
+                valid=False
+                break
+
+        if valid:
+            if len(word)>len(ans):
+                ans=word
+
+            elif len(word) ==len(ans) and word<ans:
+                ans=word
+    return ans if ans else "None"
+
+
 
 class Trienode:
     def __init__(self):
