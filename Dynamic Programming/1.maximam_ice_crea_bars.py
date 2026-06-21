@@ -25,5 +25,30 @@ class Solution:
 
     def maxIceCream(self, costs: List[int], coins: int) -> int:
         return self.recurison(costs,0,coins)
+    
+# recursion +dp time complexity is O(coins*len(costs)) and space complexity is O(len(costs))
+class Solution:
+    def recurison(self,costs,index,coins,dp):
+        if index==len(costs):
+            return 0
+        
+        if dp[index][coins]!=-1:
+            return dp[index][coins]
+        
+        buy=0
+        if coins>=costs[index]:
+            buy=1+self.recurison(costs,index+1,coins-costs[index],dp)
+        not_buy=self.recurison(costs,index+1,coins,dp)
+
+        dp[index][coins]=max(buy,not_buy)
+
+        return dp[index][coins]
+
+
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+        dp=[[-1 for _ in range(coins+1)] for _ in range(len(costs))]
+        return self.recurison(costs,0,coins,dp)
+
+        
 
         
