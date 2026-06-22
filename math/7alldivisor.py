@@ -19,7 +19,7 @@ class Solution:
         ans.sort()
         return ans
     
-# time complexity is O(logn) and space complexity is O(1)
+# time complexity is O(sqrt(n)) and space complexity is O(1)
     
 
         
