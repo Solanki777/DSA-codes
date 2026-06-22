@@ -8,7 +8,7 @@ class Solution:
                 return False
         return 
 
-time comlexity is O(sqrt(n)) and space complexity is O(1)
+# time comlexity is O(sqrt(n)) and space complexity is O(1)
 from math import sqrt
 class Solution:
     def isPrime(self, n):
