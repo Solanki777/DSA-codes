@@ -1,3 +1,4 @@
+# time complexity is O((r-l)^n) and space complexity is O(n)
 class Solution:
     def recursion(self,prev2,prev1,index,n,l,r):
         if index==n:
@@ -23,7 +24,7 @@ class Solution:
     def zigZagArrays(self,n:int,l:int,r:int)->int:
         return self.recursion(-1,-1,0,n,l,r)
 
-# dp + recursion solution
+# dp + recursion solution time complexity is O(nm^2)*m recurisons stack and space complexity is O(nm^2)
 class Solution:
     def recursion(self,prev2,prev1,index,n,l,r,dp):
         if index==n:
@@ -55,4 +56,6 @@ class Solution:
     def zigZagArrays(self,n:int,l:int,r:int)->int:
         dp={}
         return self.recursion(-1,-1,0,n,l,r,dp)
+
+
 
