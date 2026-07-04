@@ -52,3 +52,69 @@ class Solution:
             ans = max(ans, minimum)
 
         return ans
+
+
+# Time complexity is O(ElogVlogW) binary + dijkastra and space complexity is O(V+E)
+import heapq
+class Solution:
+    def findMaxPathScore(self, edges: List[List[int]], online: List[bool], k: int) -> int:
+
+        if len(edges)==0:
+            return -1
+
+        nodes=len(online)
+        adjlist=[[] for _ in range(nodes)]
+        for u,v,w in edges:
+            if online[u] and online[v]:
+                adjlist[u].append((v,w))
+    
+
+
+         # find l and r
+        l=float('inf')
+        r=float('-inf')
+        for u,v,w in edges:
+            l=min(l,w)
+            r=max(r,w)
+
+        def dijkastr(minedge):
+
+            dist=[float('inf')] * nodes
+            dist[0]=0
+            pq=[(0,0)]
+
+            while pq:
+                cost,node = heapq.heappop(pq)
+
+                if cost > dist[node]:
+                    continue
+                
+                for neg , wt in adjlist[node]:
+
+                    if wt< minedge:
+                        continue
+                    
+                    new_cost=cost+wt
+
+                    if new_cost < dist[neg]:
+                        dist[neg]=new_cost
+                        heapq.heappush(pq, (new_cost , neg))
+            
+            return dist[nodes-1]<=k
+                 
+        # binary search
+        ans=-1
+        while l<=r:
+            mid=int((l+r)//2)
+
+            if dijkastr(mid):
+                l=mid+1
+                ans=mid
+            else:
+                r=mid-1
+
+        return ans
+        
+                
+
+        
