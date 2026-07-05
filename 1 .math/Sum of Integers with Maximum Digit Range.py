@@ -26,3 +26,29 @@ class Solution:
                 temp+=nums[i]
 
         return temp
+
+
+# space complexity reduced to O(1)
+class Solution:
+    def maxDigitRange(self, nums: list[int]) -> int:
+        max_range = -1
+        ans = 0
+
+        for num in nums:
+            maxi = -1
+            mini = 10
+
+            for digit in str(num):
+                d = int(digit)
+                maxi = max(maxi, d)
+                mini = min(mini, d)
+
+            curr_range = maxi - mini
+
+            if curr_range > max_range:
+                max_range = curr_range
+                ans = num          # start new sum
+            elif curr_range == max_range:
+                ans += num         # add to existing sum
+
+        return ans
