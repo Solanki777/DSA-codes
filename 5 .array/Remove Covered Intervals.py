@@ -15,4 +15,21 @@ class Solution:
         return count
 
 
+class Solution:
+    def sumAndMultiply(self, n: int) -> int:
+        count=1
+        ans=0
+        get=0
+        while n>0:
+            digit=n%10
+            if digit !=0:
+                ans=ans+digit*count
+                count*=10
+                get+=digit
+            n=n//10
+        return ans*get
+
+            
+        
+
         
