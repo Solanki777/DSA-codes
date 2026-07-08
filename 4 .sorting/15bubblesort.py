@@ -30,3 +30,21 @@ arr=[5,7,8,9,6,2,1,4,3]
 bubble(arr)
 
 # in above case if arry is already sorted in best case where first loop comparision is done through an arry which check one by one so if set a flag if arry is already sorted than there is not need go further after the first iteration.So in best case the time complexity is O(n).And for space complexity in over all case is (1). we do not store any arry . we only stores a single variable so it is equls to 1 overall the code.
+
+
+
+class Solution:
+    def recursion(self,arr,n):
+        if n==1:
+            return 
+        
+        for i in range(n-1):
+            if arr[i]>arr[i+1]:
+                arr[i],arr[i+1]=arr[i+1],arr[i]
+        self.recursion(arr,n-1)
+        
+    def bubbleSort(self,arr):
+        self.recursion(arr,len(arr))
+    
+       
+        
