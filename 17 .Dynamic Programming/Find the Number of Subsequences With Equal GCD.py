@@ -55,4 +55,35 @@ class Solution:
     def subsequencePairCount(self, nums: List[int]) -> int:
         dp = {}
         return self.recursion(tuple(nums),0,0,0 ,dp )% (10**9 + 7)
+    
+# tabulation remove the recursion
+from math import gcd
+
+class Solution:
+    def subsequencePairCount(self, nums: List[int]) -> int:
+        MOD = 10**9 + 7
+        n = len(nums)
+        MAX = max(nums)
+
+        dp = [[[0] * (MAX + 1) for _ in range(MAX + 1)]
+              for _ in range(n + 1)]
+
+        for g in range(1, MAX + 1):
+            dp[n][g][g] = 1
+
+        for index in range(n - 1, -1, -1):
+            x = nums[index]
+
+            for g1 in range(MAX + 1):
+                for g2 in range(MAX + 1):
+
+                    skip = dp[index + 1][g1][g2]
+
+                    take1 = dp[index + 1][gcd(g1, x)][g2]
+
+                    take2 = dp[index + 1][g1][gcd(g2, x)]
+
+                    dp[index][g1][g2] = (skip + take1 + take2) % MOD
+
+        return dp[0][0][0]
         
