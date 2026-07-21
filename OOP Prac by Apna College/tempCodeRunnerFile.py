@@ -1,4 +1,4 @@
-# class Bank:
+class Bank:
 #     def __init__(self,ac_no,ac_pass):
 #         self.ac_no = ac_no
 #         self.ac_pass = ac_pass
@@ -35,17 +35,3 @@
 # b = Bank(1,"abc")
 # print(b.ac_no)
 # print(b.show_pass()) 
-
-
-
-# private method 
-class Person:
-    def __hello(self):
-        print("this is private hello")
-    
-    def bypass(self):
-        self.__hello()
-
-# Person.__hello()
-p = Person()
-p.bypass()
