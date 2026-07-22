@@ -14,3 +14,10 @@ class Solution:
         return num
             
 # Time complexity is O(numberofdigits) and space compelxity is O(1)
+
+class Solution:
+    def addDigits(self, num: int) -> int:
+        if num == 0 : return 0
+        elif num % 9 == 0 : return 9
+        else : return num % 9
+# Time and space complexity is O(1)
